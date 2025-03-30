@@ -11,7 +11,8 @@ import RootLayout from './layouts/rootLayout/RootLayout.jsx';
 import DashboardLayout from './layouts/dashboardLayout/dashboardLayout.jsx';
 import SignInPage from './routes/signInPage/signInPage.jsx';
 import SignUpPage from './routes/signUpPage/signUpPage.jsx';
-
+import Explore from './routes/explore/Explore.jsx';
+import Contacts from './routes/contacts/Contacts.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
       {
         path:"/sign-up/*",
         element: <SignUpPage />
+      },
+      {
+        path:"/explore/*",
+        element: <Explore />
+      },
+      {
+        path:"/contacts/*",
+        element: <Contacts />
       },
       {
         element: <DashboardLayout />,

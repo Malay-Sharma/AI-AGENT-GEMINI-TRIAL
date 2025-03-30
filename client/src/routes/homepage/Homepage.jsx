@@ -16,15 +16,14 @@ const Homepage = () => {
     <div className="homepage">
       <img src="/orbital.png" alt="" className="orbital" />
       <div className="left">
-        <h1>WELL-SPRING</h1>
+        <h1>SUPER AI</h1>
         <h2>
-        Meet your new AI chat companion that goes beyond conversation - it
-        can actually get things done!
-        </h2>
-        <Link to="/dashboard">GETING STARTED</Link>
+        Meet your new AI chat companion that goes beyond conversation</h2>
+        <h2>It can actually get things done!</h2>
+        <Link to="/dashboard">GET STARTED</Link>
         {/* <button onClick={test}>Click ME</button> */}
       </div>
-      <div className="right">
+      {/* <div className="right">
         <div className="imgContainer">
           <div className="bgContainer">
             <div className="bg"></div>
@@ -72,7 +71,7 @@ const Homepage = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="terms">
         <img src="/logo.png" alt="" />
         <div className="links">

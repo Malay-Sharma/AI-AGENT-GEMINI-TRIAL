@@ -19,16 +19,11 @@ const NewPrompt = ({data}) => {
   });
 
   const chat = model.startChat({
-    history: [
-      {
-        role: "user",
-        parts: [{ text: "Hello" }],
-      },
-      {
-        role: "model",
-        parts: [{ text: "Great to meet you. What would you like to know?" }],
-      },
-    ],
+    history: [data?.history.map(({role, parts}) => ({
+      role, 
+      parts:[{text: parts[0].text}],
+    })),
+  ],
     generationConfig: {
       // maxOutputTokens: 1000,
     }
@@ -106,7 +101,7 @@ const NewPrompt = ({data}) => {
       add(text, false);
       };
 
-  
+    // IN PRODUCTION WE DONT NEED IT 
     const hasRun = useRef(false);
     useEffect(() => {
       if (!hasRun.current) {

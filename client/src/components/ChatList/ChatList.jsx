@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./chatList.css";
 import { useQuery } from "@tanstack/react-query";
 
@@ -11,12 +11,15 @@ const ChatList = () => {
       }).then((res) => res.json()),
   });
 
+  const location = useLocation();
+  const currentChatId = location.pathname.split("/").pop();
+
   return (
     <div className="chatList">
       <span className="title">DASHBOARD</span>
       <Link to="/dashboard">Create a new Chat</Link>
-      <Link to="/">Explore SUPER AI</Link>
-      <Link to="/">Contact</Link>
+      <Link to="/explore">Explore SUPER AI</Link>
+      <Link to="/contacts">Contact</Link>
       <hr />
       <span className="title">RECENT CHATS</span>
       <div className="list">
@@ -24,11 +27,16 @@ const ChatList = () => {
           ? "Loading..."
           : error
           ? "Something went wrong!"
-          : data?.map((chat) => (
-              <Link to={`/dashboard/chats/${chat._id}`} key={chat._id}>
-                {chat.title}
-              </Link>
-            ))}
+          : data?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+              .map((chat) => (
+                <Link 
+                  to={`/dashboard/chats/${chat._id}`} 
+                  key={chat._id}
+                  className={chat._id === currentChatId ? 'active-chat' : ''}
+                >
+                  {chat.title}
+                </Link>
+              ))}
       </div>
       <hr />
       <div className="upgrade">
